@@ -27,7 +27,6 @@
             font-family: 'Playfair Display', serif;
         }
         
-        /* Grain texture overlay */
         .grain {
             position: fixed;
             top: 0;
@@ -40,7 +39,6 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
         
-        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -52,7 +50,6 @@
             border-radius: 4px;
         }
         
-        /* Animations */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
@@ -77,7 +74,6 @@
             animation: float 6s ease-in-out infinite;
         }
         
-        /* Hover effects */
         .hover-lift {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -86,7 +82,6 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
         
-        /* Marquee */
         .marquee-container {
             overflow: hidden;
             white-space: nowrap;
@@ -100,13 +95,11 @@
             100% { transform: translateX(-50%); }
         }
         
-        /* Filter buttons */
         .filter-btn.active {
             background-color: var(--primary);
             color: white;
         }
         
-        /* Card reveal */
         .card-reveal {
             opacity: 0;
             transform: translateY(20px);
@@ -140,7 +133,6 @@
             </button>
         </div>
         
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-[#f4f4f0] border-t border-black/10">
             <div class="flex flex-col p-6 space-y-4">
                 <a href="#research" onclick="toggleMobileMenu()">Research</a>
@@ -187,10 +179,10 @@
                         <div class="h-full w-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
                             <div class="text-center p-8">
                                 <div class="w-32 h-32 mx-auto mb-4 bg-gray-300 rounded-full overflow-hidden">
-                                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Raihan&backgroundColor=ff6b35" alt="Profile" class="w-full h-full object-cover">
+                                    <img src="raihanpp.jpeg" alt="MD Raihanul Islam" class="w-full h-full object-cover">
                                 </div>
                                 <p class="serif text-2xl font-bold">Research Scholar</p>
-                                <p class="text-gray-500 mt-2">Department of [Your Department]</p>
+                                <p class="text-gray-500 mt-2">Department of Arabic</p>
                             </div>
                         </div>
                     </div>
@@ -231,19 +223,19 @@
     <section class="py-20 border-b border-black/10">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
             <div class="text-center">
-                <div class="text-4xl font-bold serif mb-2">12+</div>
+                <div class="text-4xl font-bold serif mb-2">1+</div>
                 <div class="text-sm text-gray-600 uppercase tracking-wider">Research Papers</div>
             </div>
             <div class="text-center">
-                <div class="text-4xl font-bold serif mb-2">25+</div>
+                <div class="text-4xl font-bold serif mb-2">5+</div>
                 <div class="text-sm text-gray-600 uppercase tracking-wider">Articles</div>
             </div>
             <div class="text-center">
-                <div class="text-4xl font-bold serif mb-2">50+</div>
+                <div class="text-4xl font-bold serif mb-2">10+</div>
                 <div class="text-sm text-gray-600 uppercase tracking-wider">Study Notes</div>
             </div>
             <div class="text-center">
-                <div class="text-4xl font-bold serif mb-2">1K+</div>
+                <div class="text-4xl font-bold serif mb-2">100+</div>
                 <div class="text-sm text-gray-600 uppercase tracking-wider">Students Helped</div>
             </div>
         </div>
@@ -271,12 +263,12 @@
                         <span class="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full uppercase tracking-wider">Published</span>
                         <span class="text-gray-400 text-sm">2024</span>
                     </div>
-                    <h3 class="text-xl font-bold serif mb-3 group-hover:text-[#ff6b35] transition-colors">Sample Research Title: Impact of Digital Learning</h3>
-                    <p class="text-gray-600 text-sm mb-6 line-clamp-3">An comprehensive analysis of digital transformation in higher education institutions with focus on developing countries.</p>
+                    <h3 class="text-xl font-bold serif mb-3 group-hover:text-[#ff6b35] transition-colors">Philosophy and Islamic Philosophy: Definition, Origin, and Development</h3>
+                    <p class="text-gray-600 text-sm mb-6 line-clamp-3">A comprehensive study on the fundamental concepts of philosophy and Islamic philosophy, exploring their definitions, historical origins, and developmental trajectories in the Islamic intellectual tradition.</p>
                     <div class="flex items-center justify-between pt-6 border-t border-black/5">
-                        <span class="text-xs text-gray-500">Journal of Education Tech</span>
-                        <a href="#" class="flex items-center gap-2 text-sm font-medium hover:text-[#ff6b35] transition-colors">
-                            Read Paper <i data-lucide="external-link" class="w-4 h-4"></i>
+                        <span class="text-xs text-gray-500">Arabic Department, CU</span>
+                        <a href="https://drive.google.com/file/d/1BIMFSmxLMEFx4pBfe4kfpN3mFfHA1FRN/view?usp=drive_link" target="_blank" class="flex items-center gap-2 text-sm font-medium hover:text-[#ff6b35] transition-colors">
+                            View Paper <i data-lucide="external-link" class="w-4 h-4"></i>
                         </a>
                     </div>
                 </article>
@@ -401,7 +393,6 @@
                     <p class="text-gray-400 text-lg">Curated lecture notes, study materials, and exam preparation resources specifically prepared for Chittagong University students.</p>
                 </div>
                 
-                <!-- Search/Filter -->
                 <div class="w-full lg:w-auto">
                     <div class="relative">
                         <input type="text" id="noteSearch" placeholder="Search notes..." 
@@ -412,7 +403,6 @@
                 </div>
             </div>
 
-            <!-- Course Categories -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="notes-grid">
                 <!-- Note Card 1 -->
                 <div class="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover-lift note-item">
@@ -486,6 +476,24 @@
                     </div>
                 </div>
 
+                <!-- Note Card 5 - Ar-Rojolol Harib Minal Mawt -->
+                <div class="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover-lift note-item">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-[#ff6b35] rounded-xl flex items-center justify-center">
+                            <i data-lucide="book-open" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-xs">Arabic</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Ar-Rojolol Harib Minal Mawt</h3>
+                    <p class="text-gray-400 text-sm mb-4">Arabic literature notes for batchmates - comprehensive study material.</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                        <span class="text-xs text-gray-500">PDF • Google Drive</span>
+                        <a href="https://drive.google.com/file/d/1-xzf6NvBbtMdjzvXc_-ISUeBlwI-LIN8/view?usp=sharing" target="_blank" class="flex items-center gap-2 text-sm font-medium text-[#ff6b35] hover:text-white transition-colors">
+                            Download <i data-lucide="download" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
                 <!-- Upload CTA -->
                 <div class="group bg-gradient-to-br from-[#ff6b35] to-orange-600 rounded-2xl p-6 hover:scale-105 transition-all duration-300 cursor-pointer border border-white/20">
                     <div class="h-full flex flex-col justify-center items-center text-center">
@@ -507,7 +515,7 @@
                 <div class="space-y-6">
                     <h2 class="text-4xl md:text-5xl serif font-bold">About Me</h2>
                     <p class="text-gray-600 text-lg leading-relaxed">
-                        I am MD RAIHANUL ISLAM, currently pursuing my studies at Chittagong University. My academic journey revolves around [Your Department/Subject], with particular interest in research and knowledge dissemination.
+                        I am MD RAIHANUL ISLAM, currently pursuing my studies at Chittagong University. My academic journey revolves around Arabic Language and Literature, with particular interest in research and knowledge dissemination.
                     </p>
                     <p class="text-gray-600 leading-relaxed">
                         This platform serves as a repository of my academic work and a resource hub for fellow students. I believe in open access to educational materials and collaborative learning.
@@ -516,17 +524,17 @@
                     <div class="pt-6">
                         <h3 class="font-bold mb-4">Connect With Me</h3>
                         <div class="flex gap-4">
-                            <a href="#" class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-[#ff6b35] transition-colors">
+                            <a href="mailto:mdraihanulislam7619@gmail.com" class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-[#ff6b35] transition-colors">
                                 <i data-lucide="mail" class="w-5 h-5"></i>
                             </a>
-                            <a href="#" class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-[#ff6b35] transition-colors">
+                            <a href="https://www.linkedin.com/in/mdraihan2002" target="_blank" class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-[#ff6b35] transition-colors">
                                 <i data-lucide="linkedin" class="w-5 h-5"></i>
                             </a>
-                            <a href="#" class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-[#ff6b35] transition-colors">
-                                <i data-lucide="github" class="w-5 h-5"></i>
-                            </a>
-                            <a href="#" class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-[#ff6b35] transition-colors">
+                            <a href="https://www.facebook.com/md_raihan_02" target="_blank" class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-[#ff6b35] transition-colors">
                                 <i data-lucide="facebook" class="w-5 h-5"></i>
+                            </a>
+                            <a href="https://www.instagram.com/md_raihanulislam" target="_blank" class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-[#ff6b35] transition-colors">
+                                <i data-lucide="instagram" class="w-5 h-5"></i>
                             </a>
                         </div>
                     </div>
@@ -534,7 +542,7 @@
                 
                 <div class="relative">
                     <div class="aspect-square bg-gray-200 rounded-3xl overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&auto=format&fit=crop&q=80" alt="University Life" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+                        <img src="raihanpp.jpeg" alt="MD Raihanul Islam" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
                     </div>
                     <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl max-w-xs">
                         <p class="serif text-lg font-bold italic">"Knowledge grows when shared"</p>
@@ -553,8 +561,9 @@
                     <h3 class="text-3xl serif font-bold mb-4">RAIHAN<span class="text-[#ff6b35]">.</span></h3>
                     <p class="text-gray-400 text-sm leading-relaxed">
                         Chittagong University<br>
-                        Department of [Your Department]<br>
-                        Bangladesh
+                        Department of Arabic<br>
+                        Bangladesh<br>
+                        <a href="mailto:mdraihanulislam7619@gmail.com" class="hover:text-[#ff6b35] transition-colors">mdraihanulislam7619@gmail.com</a>
                     </p>
                 </div>
                 
@@ -588,18 +597,14 @@
     </footer>
 
     <script>
-        // Initialize Lucide icons
         lucide.createIcons();
         
-        // Mobile menu toggle
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         }
         
-        // Filter functionality for research papers
         function filterItems(section, category) {
-            // Update button states
             const buttons = document.querySelectorAll(`#${section} .filter-btn`);
             buttons.forEach(btn => {
                 btn.classList.remove('active');
@@ -608,7 +613,6 @@
                 }
             });
             
-            // Filter items with animation
             const items = document.querySelectorAll(`.${section}-item`);
             items.forEach(item => {
                 if (category === 'all' || item.dataset.category === category) {
@@ -627,7 +631,6 @@
             });
         }
         
-        // Search functionality for notes
         function searchNotes() {
             const input = document.getElementById('noteSearch');
             const filter = input.value.toLowerCase();
@@ -648,7 +651,6 @@
             }
         }
         
-        // Scroll animations
         const observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -665,7 +667,6 @@
         
         document.querySelectorAll('.card-reveal').forEach((el) => observer.observe(el));
         
-        // Navbar scroll effect
         let lastScroll = 0;
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
@@ -680,7 +681,6 @@
             lastScroll = currentScroll;
         });
         
-        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
