@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD RAIHANUL ISLAM | Scholar & Researcher</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #ff6b35;
+            --secondary: #f4f4f0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--secondary);
+            color: var(--primary);
+            overflow-x: hidden;
+        }
+        
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Grain texture overlay */
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--secondary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-slide-in {
+            animation: slideIn 0.8s ease-out forwards;
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Hover effects */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        /* Marquee */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        /* Filter buttons */
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Card reveal */
+        .card-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        .card-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="grain"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 top-0 bg-[#f4f4f0]/90 backdrop-blur-md border-b border-black/5 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold serif tracking-tighter">
+                RAIHAN<span class="text-[#ff6b35]">.</span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#research" class="hover:text-[#ff6b35] transition-colors">Research</a>
+                <a href="#articles" class="hover:text-[#ff6b35] transition-colors">Articles</a>
+                <a href="#notes" class="hover:text-[#ff6b35] transition-colors">Batch Notes</a>
+                <a href="#about" class="hover:text-[#ff6b35] transition-colors">About</a>
+            </div>
+            
+            <button onclick="toggleMobileMenu()" class="md:hidden">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#f4f4f0] border-t border-black/10">
+            <div class="flex flex-col p-6 space-y-4">
+                <a href="#research" onclick="toggleMobileMenu()">Research</a>
+                <a href="#articles" onclick="toggleMobileMenu()">Articles</a>
+                <a href="#notes" onclick="toggleMobileMenu()">Batch Notes</a>
+                <a href="#about" onclick="toggleMobileMenu()">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-[#ff6b35]/10 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 z-10 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 animate-slide-in">
+                <div class="inline-block px-4 py-2 border border-black/20 rounded-full text-xs font-medium tracking-widest uppercase">
+                    Chittagong University
+                </div>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl serif font-black leading-none tracking-tight">
+                    MD RAIHANUL<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ff6b35] to-orange-600">ISLAM</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 max-w-lg leading-relaxed">
+                    Scholar, researcher, and educator. Curating knowledge through research papers, academic articles, and comprehensive study resources for fellow students.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#research" class="px-8 py-4 bg-black text-white rounded-full font-medium hover:bg-[#ff6b35] transition-all duration-300 flex items-center gap-2">
+                        Explore Research <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#notes" class="px-8 py-4 border-2 border-black rounded-full font-medium hover:bg-black hover:text-white transition-all duration-300">
+                        Batch Resources
+                    </a>
+                </div>
+            </div>
+            
+            <div class="relative hidden md:block">
+                <div class="relative w-full aspect-square max-w-md mx-auto">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[#ff6b35] to-yellow-500 rounded-3xl rotate-6 opacity-20"></div>
+                    <div class="absolute inset-0 bg-white rounded-3xl shadow-2xl overflow-hidden">
+                        <div class="h-full w-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                            <div class="text-center p-8">
+                                <div class="w-32 h-32 mx-auto mb-4 bg-gray-300 rounded-full overflow-hidden">
+                                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Raihan&backgroundColor=ff6b35" alt="Profile" class="w-full h-full object-cover">
+                                </div>
+                                <p class="serif text-2xl font-bold">Research Scholar</p>
+                                <p class="text-gray-500 mt-2">Department of [Your Department]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="w-6 h-6 text-gray-400"></i>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="bg-black text-white py-4 border-y border-gray-800">
+        <div class="marquee-container">
+            <div class="marquee-content text-sm font-medium tracking-widest uppercase">
+                <span class="mx-8">Research Papers</span>
+                <span class="mx-8 text-[#ff6b35]">•</span>
+                <span class="mx-8">Academic Articles</span>
+                <span class="mx-8 text-[#ff6b35]">•</span>
+                <span class="mx-8">Study Notes</span>
+                <span class="mx-8 text-[#ff6b35]">•</span>
+                <span class="mx-8">Batch Resources</span>
+                <span class="mx-8 text-[#ff6b35]">•</span>
+                <span class="mx-8">Research Papers</span>
+                <span class="mx-8 text-[#ff6b35]">•</span>
+                <span class="mx-8">Academic Articles</span>
+                <span class="mx-8 text-[#ff6b35]">•</span>
+                <span class="mx-8">Study Notes</span>
+                <span class="mx-8 text-[#ff6b35]">•</span>
+                <span class="mx-8">Batch Resources</span>
+                <span class="mx-8 text-[#ff6b35]">•</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <section class="py-20 border-b border-black/10">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center">
+                <div class="text-4xl font-bold serif mb-2">12+</div>
+                <div class="text-sm text-gray-600 uppercase tracking-wider">Research Papers</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold serif mb-2">25+</div>
+                <div class="text-sm text-gray-600 uppercase tracking-wider">Articles</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold serif mb-2">50+</div>
+                <div class="text-sm text-gray-600 uppercase tracking-wider">Study Notes</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold serif mb-2">1K+</div>
+                <div class="text-sm text-gray-600 uppercase tracking-wider">Students Helped</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Papers Section -->
+    <section id="research" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+                <div class="max-w-2xl">
+                    <h2 class="text-4xl md:text-6xl serif font-bold mb-4">Research Papers</h2>
+                    <p class="text-gray-600 text-lg">Academic research and publications in various fields of study.</p>
+                </div>
+                <div class="flex gap-2 mt-6 md:mt-0">
+                    <button class="filter-btn active px-6 py-2 rounded-full border border-black/20 text-sm font-medium transition-all" onclick="filterItems('research', 'all')">All</button>
+                    <button class="filter-btn px-6 py-2 rounded-full border border-black/20 text-sm font-medium transition-all hover:bg-black/5" onclick="filterItems('research', 'published')">Published</button>
+                    <button class="filter-btn px-6 py-2 rounded-full border border-black/20 text-sm font-medium transition-all hover:bg-black/5" onclick="filterItems('research', 'working')">Working</button>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="research-grid">
+                <!-- Paper 1 -->
+                <article class="group bg-white rounded-2xl p-8 border border-black/5 hover-lift card-reveal research-item" data-category="published">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full uppercase tracking-wider">Published</span>
+                        <span class="text-gray-400 text-sm">2024</span>
+                    </div>
+                    <h3 class="text-xl font-bold serif mb-3 group-hover:text-[#ff6b35] transition-colors">Sample Research Title: Impact of Digital Learning</h3>
+                    <p class="text-gray-600 text-sm mb-6 line-clamp-3">An comprehensive analysis of digital transformation in higher education institutions with focus on developing countries.</p>
+                    <div class="flex items-center justify-between pt-6 border-t border-black/5">
+                        <span class="text-xs text-gray-500">Journal of Education Tech</span>
+                        <a href="#" class="flex items-center gap-2 text-sm font-medium hover:text-[#ff6b35] transition-colors">
+                            Read Paper <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Paper 2 -->
+                <article class="group bg-white rounded-2xl p-8 border border-black/5 hover-lift card-reveal research-item" data-category="working">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full uppercase tracking-wider">Working Paper</span>
+                        <span class="text-gray-400 text-sm">2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold serif mb-3 group-hover:text-[#ff6b35] transition-colors">Economic Patterns in Coastal Regions</h3>
+                    <p class="text-gray-600 text-sm mb-6 line-clamp-3">Investigating the socioeconomic dynamics of coastal communities in Bangladesh.</p>
+                    <div class="flex items-center justify-between pt-6 border-t border-black/5">
+                        <span class="text-xs text-gray-500">Under Review</span>
+                        <button class="flex items-center gap-2 text-sm font-medium hover:text-[#ff6b35] transition-colors">
+                            View Abstract <i data-lucide="file-text" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Paper 3 -->
+                <article class="group bg-white rounded-2xl p-8 border border-black/5 hover-lift card-reveal research-item" data-category="published">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full uppercase tracking-wider">Published</span>
+                        <span class="text-gray-400 text-sm">2023</span>
+                    </div>
+                    <h3 class="text-xl font-bold serif mb-3 group-hover:text-[#ff6b35] transition-colors">Sustainable Development Goals: Local Implementation</h3>
+                    <p class="text-gray-600 text-sm mb-6 line-clamp-3">Case study analysis of SDG implementation at the grassroots level in Chittagong region.</p>
+                    <div class="flex items-center justify-between pt-6 border-t border-black/5">
+                        <span class="text-xs text-gray-500">Sustainability Review</span>
+                        <a href="#" class="flex items-center gap-2 text-sm font-medium hover:text-[#ff6b35] transition-colors">
+                            Download PDF <i data-lucide="download" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles & Writings -->
+    <section id="articles" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16">
+                <h2 class="text-4xl md:text-6xl serif font-bold mb-4">Articles & Writings</h2>
+                <p class="text-gray-600 text-lg max-w-2xl">Thoughts, essays, and opinion pieces on academia, society, and student life.</p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Article 1 -->
+                <article class="group flex flex-col md:flex-row gap-8 p-6 rounded-2xl hover:bg-[#f4f4f0] transition-all duration-300 border-b border-black/10 card-reveal">
+                    <div class="md:w-1/4">
+                        <span class="text-sm text-gray-500 font-medium">December 15, 2024</span>
+                        <div class="flex gap-2 mt-2">
+                            <span class="px-3 py-1 bg-black/5 rounded-full text-xs">Education</span>
+                            <span class="px-3 py-1 bg-black/5 rounded-full text-xs">Opinion</span>
+                        </div>
+                    </div>
+                    <div class="md:w-3/4">
+                        <h3 class="text-2xl font-bold serif mb-3 group-hover:text-[#ff6b35] transition-colors cursor-pointer">
+                            The Future of Higher Education in Bangladesh
+                        </h3>
+                        <p class="text-gray-600 mb-4 line-clamp-2">Exploring the challenges and opportunities facing public universities in the digital age. How can institutions like Chittagong University adapt to rapidly changing educational landscapes?</p>
+                        <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold hover:gap-4 transition-all">
+                            Read Full Article <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="group flex flex-col md:flex-row gap-8 p-6 rounded-2xl hover:bg-[#f4f4f0] transition-all duration-300 border-b border-black/10 card-reveal">
+                    <div class="md:w-1/4">
+                        <span class="text-sm text-gray-500 font-medium">November 28, 2024</span>
+                        <div class="flex gap-2 mt-2">
+                            <span class="px-3 py-1 bg-black/5 rounded-full text-xs">Research</span>
+                            <span class="px-3 py-1 bg-black/5 rounded-full text-xs">Methodology</span>
+                        </div>
+                    </div>
+                    <div class="md:w-3/4">
+                        <h3 class="text-2xl font-bold serif mb-3 group-hover:text-[#ff6b35] transition-colors cursor-pointer">
+                            Qualitative vs Quantitative: A Student's Guide
+                        </h3>
+                        <p class="text-gray-600 mb-4 line-clamp-2">Breaking down research methodologies for undergraduate students beginning their thesis journey. Practical tips for choosing the right approach.</p>
+                        <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold hover:gap-4 transition-all">
+                            Read Full Article <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="group flex flex-col md:flex-row gap-8 p-6 rounded-2xl hover:bg-[#f4f4f0] transition-all duration-300 card-reveal">
+                    <div class="md:w-1/4">
+                        <span class="text-sm text-gray-500 font-medium">October 10, 2024</span>
+                        <div class="flex gap-2 mt-2">
+                            <span class="px-3 py-1 bg-black/5 rounded-full text-xs">Student Life</span>
+                        </div>
+                    </div>
+                    <div class="md:w-3/4">
+                        <h3 class="text-2xl font-bold serif mb-3 group-hover:text-[#ff6b35] transition-colors cursor-pointer">
+                            Navigating Campus Politics: A Balanced Perspective
+                        </h3>
+                        <p class="text-gray-600 mb-4 line-clamp-2">Understanding the role of student politics in university life while maintaining academic focus. Insights from four years at Chittagong University.</p>
+                        <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold hover:gap-4 transition-all">
+                            Read Full Article <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Batchmate Notes Section -->
+    <section id="notes" class="py-24 bg-[#1a1a1a] text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#ff6b35]/10 to-transparent"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 gap-8">
+                <div class="max-w-2xl">
+                    <div class="inline-block px-4 py-2 bg-[#ff6b35] rounded-full text-xs font-bold uppercase tracking-wider mb-4">
+                        For Batchmates
+                    </div>
+                    <h2 class="text-4xl md:text-6xl serif font-bold mb-4">Study Resources & Notes</h2>
+                    <p class="text-gray-400 text-lg">Curated lecture notes, study materials, and exam preparation resources specifically prepared for Chittagong University students.</p>
+                </div>
+                
+                <!-- Search/Filter -->
+                <div class="w-full lg:w-auto">
+                    <div class="relative">
+                        <input type="text" id="noteSearch" placeholder="Search notes..." 
+                            class="w-full lg:w-80 px-6 py-3 bg-white/10 border border-white/20 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-[#ff6b35] transition-colors"
+                            onkeyup="searchNotes()">
+                        <i data-lucide="search" class="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Categories -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="notes-grid">
+                <!-- Note Card 1 -->
+                <div class="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover-lift note-item">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-[#ff6b35] rounded-xl flex items-center justify-center">
+                            <i data-lucide="file-text" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-xs">3rd Year</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Research Methodology Notes</h3>
+                    <p class="text-gray-400 text-sm mb-4">Complete lecture notes with methodology examples and SPSS guidelines.</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                        <span class="text-xs text-gray-500">PDF • 4.2 MB</span>
+                        <a href="#" class="flex items-center gap-2 text-sm font-medium text-[#ff6b35] hover:text-white transition-colors">
+                            Download <i data-lucide="download" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Note Card 2 -->
+                <div class="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover-lift note-item">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center">
+                            <i data-lucide="book-open" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-xs">2nd Year</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Statistical Analysis Guide</h3>
+                    <p class="text-gray-400 text-sm mb-4">Formulas, solved problems, and quick reference for final exams.</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                        <span class="text-xs text-gray-500">PDF • 2.8 MB</span>
+                        <a href="#" class="flex items-center gap-2 text-sm font-medium text-[#ff6b35] hover:text-white transition-colors">
+                            Download <i data-lucide="download" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Note Card 3 -->
+                <div class="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover-lift note-item">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center">
+                            <i data-lucide="presentation" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-xs">4th Year</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Thesis Writing Template</h3>
+                    <p class="text-gray-400 text-sm mb-4">CU thesis format template with chapter guidelines and sample pages.</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                        <span class="text-xs text-gray-500">DOCX • 1.5 MB</span>
+                        <a href="#" class="flex items-center gap-2 text-sm font-medium text-[#ff6b35] hover:text-white transition-colors">
+                            Download <i data-lucide="download" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Note Card 4 -->
+                <div class="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover-lift note-item">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center">
+                            <i data-lucide="calendar" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-xs">1st Year</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Introductory Course Materials</h3>
+                    <p class="text-gray-400 text-sm mb-4">Foundation course notes with important topics highlighted.</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                        <span class="text-xs text-gray-500">PDF • 5.1 MB</span>
+                        <a href="#" class="flex items-center gap-2 text-sm font-medium text-[#ff6b35] hover:text-white transition-colors">
+                            Download <i data-lucide="download" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Upload CTA -->
+                <div class="group bg-gradient-to-br from-[#ff6b35] to-orange-600 rounded-2xl p-6 hover:scale-105 transition-all duration-300 cursor-pointer border border-white/20">
+                    <div class="h-full flex flex-col justify-center items-center text-center">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4">
+                            <i data-lucide="upload-cloud" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Request Notes</h3>
+                        <p class="text-white/80 text-sm">Need specific materials? Contact me to request upload of particular topics.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-6">
+                    <h2 class="text-4xl md:text-5xl serif font-bold">About Me</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        I am MD RAIHANUL ISLAM, currently pursuing my studies at Chittagong University. My academic journey revolves around [Your Department/Subject], with particular interest in research and knowledge dissemination.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        This platform serves as a repository of my academic work and a resource hub for fellow students. I believe in open access to educational materials and collaborative learning.
+                    </p>
+                    
+                    <div class="pt-6">
+                        <h3 class="font-bold mb-4">Connect With Me</h3>
+                        <div class="flex gap-4">
+                            <a href="#" class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-[#ff6b35] transition-colors">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-[#ff6b35] transition-colors">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-[#ff6b35] transition-colors">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-[#ff6b35] transition-colors">
+                                <i data-lucide="facebook" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="aspect-square bg-gray-200 rounded-3xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&auto=format&fit=crop&q=80" alt="University Life" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl max-w-xs">
+                        <p class="serif text-lg font-bold italic">"Knowledge grows when shared"</p>
+                        <p class="text-sm text-gray-500 mt-2">— Personal Philosophy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter/Footer -->
+    <footer class="bg-black text-white py-16 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <h3 class="text-3xl serif font-bold mb-4">RAIHAN<span class="text-[#ff6b35]">.</span></h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Chittagong University<br>
+                        Department of [Your Department]<br>
+                        Bangladesh
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4 text-lg">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#research" class="hover:text-[#ff6b35] transition-colors">Research Papers</a></li>
+                        <li><a href="#articles" class="hover:text-[#ff6b35] transition-colors">Articles</a></li>
+                        <li><a href="#notes" class="hover:text-[#ff6b35] transition-colors">Study Notes</a></li>
+                        <li><a href="#" class="hover:text-[#ff6b35] transition-colors">Academic CV</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4 text-lg">Stay Updated</h4>
+                    <p class="text-gray-400 text-sm mb-4">Get notified when new notes or research is published.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-l-full text-sm focus:outline-none focus:border-[#ff6b35]">
+                        <button class="px-6 py-3 bg-[#ff6b35] rounded-r-full font-medium hover:bg-orange-600 transition-colors">
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">&copy; 2024 MD RAIHANUL ISLAM. All rights reserved.</p>
+                <p class="text-gray-600 text-xs">Designed with ❤️ for academic excellence</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        
+        // Filter functionality for research papers
+        function filterItems(section, category) {
+            // Update button states
+            const buttons = document.querySelectorAll(`#${section} .filter-btn`);
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.textContent.toLowerCase().includes(category) || (category === 'all' && btn.textContent === 'All')) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Filter items with animation
+            const items = document.querySelectorAll(`.${section}-item`);
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 10);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+        
+        // Search functionality for notes
+        function searchNotes() {
+            const input = document.getElementById('noteSearch');
+            const filter = input.value.toLowerCase();
+            const notes = document.getElementsByClassName('note-item');
+            
+            for (let i = 0; i < notes.length; i++) {
+                const title = notes[i].getElementsByTagName('h3')[0];
+                const desc = notes[i].getElementsByTagName('p')[0];
+                
+                if (title && desc) {
+                    const txtValue = title.textContent + desc.textContent;
+                    if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                        notes[i].style.display = '';
+                    } else {
+                        notes[i].style.display = 'none';
+                    }
+                }
+            }
+        }
+        
+        // Scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.card-reveal').forEach((el) => observer.observe(el));
+        
+        // Navbar scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+            
+            lastScroll = currentScroll;
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
